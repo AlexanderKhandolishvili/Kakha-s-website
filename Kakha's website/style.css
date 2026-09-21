@@ -1,0 +1,479 @@
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.btn {
+    display: inline-block;
+    background: #0077b6;
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #023e8a;
+}
+
+/* ===== HEADER / NAV ===== */
+header {
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-img {
+    height: 70px;
+    width: auto;
+    display: block;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.lang-toggle {
+    background: none;
+    border: 2px solid #0077b6;
+    color: #0077b6;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.lang-toggle:hover {
+    background: #0077b6;
+    color: #fff;
+}
+
+.nav-links a {
+    color: #333;
+    font-weight: 600;
+    padding: 5px 0;
+    border-bottom: 3px solid transparent;
+    transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    border-bottom-color: #0077b6;
+    color: #0077b6;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: #333;
+    border-radius: 3px;
+}
+
+/* ===== HERO ===== */
+.hero {
+    /* The photo fills the whole hero (background-size: cover), and the
+       semi-transparent gradient is layered on top of it so the white
+       heading text stays readable against sky/snow. */
+    background-image:
+        url("images/background_photo.jpg");
+    background-size: cover;
+    background-position: center 70%;
+    background-repeat: no-repeat;
+    color: #050505;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 30px;
+}
+
+/* ===== FEATURES ===== */
+.features {
+    padding: 60px 0;
+    background: #f8f9fa;
+}
+
+.features .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.feature-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.feature-box h3 {
+    color: #0077b6;
+    margin-bottom: 10px;
+}
+
+/* A feature box with a photo background instead of the plain white card.
+   The dark overlay keeps the white heading/text readable over any photo. */
+.feature-box.feature-quality {
+    background-image:
+        linear-gradient(rgba(10, 30, 45, 0.55), rgba(10, 30, 45, 0.55)),
+        url("images/feature-quality.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.feature-box.feature-quality h3 {
+    color: #fff;
+}
+
+.feature-box.feature-quality p {
+    color: #f0f0f0;
+}
+
+.feature-box.feature-pricing {
+    background-image:
+        linear-gradient(rgba(10, 30, 45, 0.55), rgba(10, 30, 45, 0.55)),
+        url("images/pricing.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.feature-box.feature-pricing h3 {
+    color: #fff;
+}
+
+.feature-box.feature-pricing p {
+    color: #f0f0f0;
+}
+
+.feature-box.feature-customer {
+    background-image:
+        linear-gradient(rgba(10, 30, 45, 0.55), rgba(10, 30, 45, 0.55)),
+        url("images/feature-customer.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.feature-box.feature-customer h3 {
+    color: #fff;
+}
+
+.feature-box.feature-customer p {
+    color: #f0f0f0;
+}
+
+.feature-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 15px;
+}
+
+.feature-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* ===== PAGE CONTENT ===== */
+.page-content {
+    padding: 60px 0;
+}
+
+.page-content h1 {
+    font-size: 2.2rem;
+    color: #0077b6;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.page-content p {
+    max-width: 700px;
+    margin: 0 auto 15px;
+    text-align: center;
+}
+
+/* ===== SERVICES GRID ===== */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.service-card {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.service-card p {
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+.service-card h3 {
+    color: #0077b6;
+    margin-bottom: 10px;
+}
+
+/* A service card with a photo background instead of the plain light-gray
+   card. Same treatment as the home page feature boxes: dark overlay to
+   keep the (now white) text readable over the photo. */
+.service-card.service-photo-1 {
+    background-image:
+        linear-gradient(rgba(10, 30, 45, 0.55), rgba(10, 30, 45, 0.55)),
+        url("images/services-1.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.service-card.service-photo-1 h3 {
+    color: #fff;
+}
+
+.service-card.service-photo-1 p {
+    color: #f0f0f0;
+}
+
+.service-card.service-photo-2 {
+    background-image:
+        linear-gradient(rgba(10, 30, 45, 0.55), rgba(10, 30, 45, 0.55)),
+        url("images/services-2.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.service-card.service-photo-2 h3 {
+    color: #fff;
+}
+
+.service-card.service-photo-2 p {
+    color: #f0f0f0;
+}
+
+.service-card.service-photo-3 {
+    background-image:
+        linear-gradient(rgba(10, 30, 45, 0.55), rgba(10, 30, 45, 0.55)),
+        url("images/services-3.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.service-card.service-photo-3 h3 {
+    color: #fff;
+}
+
+.service-card.service-photo-3 p {
+    color: #f0f0f0;
+}
+
+.service-card.service-photo-4 {
+    background-image:
+        linear-gradient(rgba(10, 30, 45, 0.55), rgba(10, 30, 45, 0.55)),
+        url("images/services-4.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.service-card.service-photo-4 h3 {
+    color: #fff;
+}
+
+.service-card.service-photo-4 p {
+    color: #f0f0f0;
+}
+
+.service-card.service-photo-5 {
+    background-image:
+        linear-gradient(rgba(10, 30, 45, 0.55), rgba(10, 30, 45, 0.55)),
+        url("images/services-5.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.service-card.service-photo-5 h3 {
+    color: #fff;
+}
+
+.service-card.service-photo-5 p {
+    color: #f0f0f0;
+}
+
+.service-card.service-photo-6 {
+    background-image:
+        linear-gradient(rgba(10, 30, 45, 0.55), rgba(10, 30, 45, 0.55)),
+        url("images/services-6.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.service-card.service-photo-6 h3 {
+    color: #fff;
+}
+
+.service-card.service-photo-6 p {
+    color: #f0f0f0;
+}
+
+/* ===== CONTACT ===== */
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.contact-info p {
+    text-align: left !important;
+    margin: 12px 0 !important;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.contact-form button {
+    border: none;
+    cursor: pointer;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background: #1a1a2e;
+    color: #fff;
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 20px;
+}
+
+/* ===== RESPONSIVE (Tablet) ===== */
+/* Between phone and full desktop the logo + nav don't fit at full size,
+   so tighten them a little. Phones (768px and below) use the mobile block below. */
+@media (min-width: 769px) and (max-width: 1000px) {
+    .logo-img {
+        height: 56px;
+    }
+
+    .nav-links {
+        gap: 18px;
+    }
+
+    .nav-links a {
+        font-size: 0.9rem;
+        white-space: nowrap;
+    }
+
+    .lang-toggle {
+        white-space: nowrap;
+        padding: 6px 12px;
+    }
+}
+
+/* ===== RESPONSIVE (Mobile) ===== */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #fff;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        gap: 15px;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    /* Narrow screens crop harder; shift right toward the ridge instead of sky. */
+    .hero {
+        background-position: 70% 65%;
+    }
+
+    .logo-img {
+        height: 34px;
+    }
+
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
