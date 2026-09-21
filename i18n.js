@@ -8,6 +8,9 @@ const TRANSLATIONS = {
         "nav.services": "Services",
         "nav.contact": "Contact",
 
+        "logo.src": "images/logo.png",
+        "logo.alt": "Human Capital Development Group",
+
         "title.home": "Home | Human Capital Development Group",
         "title.about": "About | Human Capital Development Group",
         "title.services": "Services | Human Capital Development Group",
@@ -70,6 +73,9 @@ const TRANSLATIONS = {
         "nav.about": "ჩვენ შესახებ",
         "nav.services": "სერვისები",
         "nav.contact": "კონტაქტი",
+
+        "logo.src": "images/logo-ka.png",
+        "logo.alt": "ადამიანური კაპიტალის განვითარების ჯგუფი",
 
         "title.home": "მთავარი | ადამიანური კაპიტალის განვითარების ჯგუფი",
         "title.about": "ჩვენ შესახებ | ადამიანური კაპიტალის განვითარების ჯგუფი",
@@ -151,6 +157,12 @@ function applyLanguage(lang) {
 
     const toggleBtn = document.getElementById("lang-toggle");
     if (toggleBtn) toggleBtn.textContent = dict["lang.toggle"];
+
+    const logoImg = document.querySelector(".logo-img");
+    if (logoImg) {
+        if (dict["logo.src"]) logoImg.src = dict["logo.src"];
+        if (dict["logo.alt"]) logoImg.alt = dict["logo.alt"];
+    }
 
     localStorage.setItem("site-lang", lang);
 }

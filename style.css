@@ -414,6 +414,29 @@ footer {
     margin-top: 20px;
 }
 
+/* ===== RESPONSIVE (Tablet) ===== */
+/* Between phone and full desktop the logo + nav don't fit at full size,
+   so tighten them a little. Phones (768px and below) use the mobile block below. */
+@media (min-width: 769px) and (max-width: 1000px) {
+    .logo-img {
+        height: 56px;
+    }
+
+    .nav-links {
+        gap: 18px;
+    }
+
+    .nav-links a {
+        font-size: 0.9rem;
+        white-space: nowrap;
+    }
+
+    .lang-toggle {
+        white-space: nowrap;
+        padding: 6px 12px;
+    }
+}
+
 /* ===== RESPONSIVE (Mobile) ===== */
 @media (max-width: 768px) {
     .nav-links {
