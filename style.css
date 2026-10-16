@@ -167,14 +167,15 @@ a.fb-link:hover svg {
 /* ===== HERO ===== */
 .hero {
     /* The photo fills the whole hero (background-size: cover), and the
-       semi-transparent gradient is layered on top of it so the white
+       semi-transparent dark gradient is layered on top of it so the white
        heading text stays readable against sky/snow. */
     background-image:
+        linear-gradient(rgba(10, 30, 45, 0.5), rgba(10, 30, 45, 0.5)),
         url("images/background_photo.jpg");
     background-size: cover;
     background-position: center 70%;
     background-repeat: no-repeat;
-    color: #050505;
+    color: #fff;
     padding: 100px 0;
     text-align: center;
 }
@@ -423,6 +424,19 @@ a.fb-link:hover svg {
 
 .service-card.service-photo-6 p {
     color: #f0f0f0;
+}
+
+/* Visually hidden but still read by screen readers (used for form labels) */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 /* ===== CONTACT ===== */

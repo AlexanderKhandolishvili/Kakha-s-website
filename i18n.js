@@ -67,6 +67,7 @@ const TRANSLATIONS = {
         "contact.form.email": "Your Email",
         "contact.form.subject": "Subject",
         "contact.form.message": "Your Message...",
+        "contact.form.messageLabel": "Your Message",
         "contact.form.submit": "Send Message",
         "contact.form.sending": "Sending...",
         "contact.form.thanks": "Thank you! Your message has been sent. We'll get back to you soon.",
@@ -141,6 +142,7 @@ const TRANSLATIONS = {
         "contact.form.email": "თქვენი ელფოსტა",
         "contact.form.subject": "თემა",
         "contact.form.message": "თქვენი შეტყობინება...",
+        "contact.form.messageLabel": "თქვენი შეტყობინება",
         "contact.form.submit": "შეტყობინების გაგზავნა",
         "contact.form.sending": "იგზავნება...",
         "contact.form.thanks": "გმადლობთ! თქვენი შეტყობინება გაიგზავნა. მალე დაგიკავშირდებით.",
@@ -151,6 +153,25 @@ const TRANSLATIONS = {
         "lang.toggle": "English"
     }
 };
+
+// ===== SAFE STORAGE =====
+// localStorage can throw (some private-browsing modes, blocked cookies).
+// These helpers make sure that never breaks the page.
+function getSavedLang() {
+    try {
+        return localStorage.getItem("site-lang") || "ka";
+    } catch (e) {
+        return "ka";
+    }
+}
+
+function saveLang(lang) {
+    try {
+        localStorage.setItem("site-lang", lang);
+    } catch (e) {
+        /* ignore: the language just won't be remembered */
+    }
+}
 
 // ===== LANGUAGE ENGINE =====
 function applyLanguage(lang) {
@@ -185,19 +206,19 @@ function applyLanguage(lang) {
         if (dict["logo.alt"]) logoImg.alt = dict["logo.alt"];
     }
 
-    localStorage.setItem("site-lang", lang);
+    saveLang(lang);
     document.documentElement.classList.remove("i18n-pending");
 }
 
 function initLanguage() {
-    const saved = localStorage.getItem("site-lang") || "ka";
-    applyLanguage(saved);
+    applyLanguage(getSavedLang());
 
     const toggleBtn = document.getElementById("lang-toggle");
     if (toggleBtn) {
         toggleBtn.addEventListener("click", () => {
-            const current = localStorage.getItem("site-lang") || "ka";
-            applyLanguage(current === "en" ? "ka" : "en");
+            // The page's own lang attribute is the source of truth,
+            // so the toggle still works even if storage is unavailable.
+            applyLanguage(document.documentElement.lang === "ka" ? "en" : "ka");
         });
     }
 }
