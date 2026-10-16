@@ -5,6 +5,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact | Human Capital Development Group</title>
+    <meta name="description" content="Contact Human Capital Development Group in Tbilisi, Georgia. Call +995 599 33 44 17 or send us a message." data-i18n-content="meta.contact" />
+    <link rel="icon" type="image/png" href="images/logo.png" />
+
+    <!-- Open Graph: how the link looks when shared (Facebook, Messenger, etc.) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Human Capital Development Group" />
+    <meta property="og:title" content="Contact | Human Capital Development Group" data-i18n-content="title.contact" />
+    <meta property="og:description" content="Contact Human Capital Development Group in Tbilisi, Georgia. Call +995 599 33 44 17 or send us a message." data-i18n-content="meta.contact" />
+    <meta property="og:url" content="https://hcdgroup.ge/contact.html" />
+    <meta property="og:image" content="https://hcdgroup.ge/images/logo.png" />
+
+    <script>
+        // Hide the page until the saved language is applied (prevents a flash of English).
+        // The timeout is a safety net so the page can never stay hidden.
+        document.documentElement.classList.add("i18n-pending");
+        setTimeout(function () { document.documentElement.classList.remove("i18n-pending"); }, 2000);
+    </script>
     <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -23,6 +40,9 @@
                     <li><a href="./contact.html" class="active" data-i18n="nav.contact">Contact</a></li>
                     <li><button id="lang-toggle" class="lang-toggle">ქართული</button></li>
                 </ul>
+                <a href="https://www.facebook.com/profile.php?id=61594739438778" class="fb-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.52c-1.49 0-1.96.93-1.96 1.88v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
+                </a>
                 <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false"
                     aria-controls="nav-links">
                     <span></span>
@@ -39,9 +59,10 @@
             <div class="contact-wrapper">
                 <div class="contact-info">
                     <p><strong data-i18n="contact.addressLabel">📍 Address:</strong> <span data-i18n="contact.addressValue">Tbilisi, Georgia</span></p>
-                    <p><strong data-i18n="contact.phoneLabel">📞 Phone:</strong> <span data-i18n="contact.phoneValue">+995 599 33 44 17</span></p>
-                    <p><strong data-i18n="contact.emailLabel">✉️ Email:</strong> <span data-i18n="contact.emailValue">hcdgroupge@gmail.com</span></p>
+                    <p><strong data-i18n="contact.phoneLabel">📞 Phone:</strong> <a href="tel:+995599334417" class="contact-link"><span data-i18n="contact.phoneValue">+995 599 33 44 17</span></a></p>
+                    <p><strong data-i18n="contact.emailLabel">✉️ Email:</strong> <a href="mailto:hcdgroupge@gmail.com" class="contact-link"><span data-i18n="contact.emailValue">hcdgroupge@gmail.com</span></a></p>
                     <p><strong data-i18n="contact.hoursLabel">🕐 Hours:</strong> <span data-i18n="contact.hoursValue">Mon–Fri, 9am – 6pm</span></p>
+                    <p><svg class="contact-fb-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.52c-1.49 0-1.96.93-1.96 1.88v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg> <strong data-i18n="contact.facebookLabel">Facebook:</strong> <a href="https://www.facebook.com/profile.php?id=61594739438778" class="contact-fb" target="_blank" rel="noopener noreferrer" data-i18n="contact.facebookValue">Visit our Facebook page</a></p>
                 </div>
                 <form class="contact-form" id="contactForm" action="https://formsubmit.co/hcdgroupge@gmail.com" method="POST">
                     <input type="hidden" name="_subject" value="New message from your website" />
@@ -52,6 +73,7 @@
                     <input type="text" name="subject" placeholder="Subject" data-i18n-placeholder="contact.form.subject" />
                     <textarea name="message" placeholder="Your Message..." data-i18n-placeholder="contact.form.message" rows="5" required></textarea>
                     <button type="submit" class="btn" data-i18n="contact.form.submit">Send Message</button>
+                    <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
                 </form>
             </div>
         </div>

@@ -1,3 +1,8 @@
+/* Hidden until i18n.js has applied the saved language (see the inline script in each page's <head>) */
+html.i18n-pending body {
+    visibility: hidden;
+}
+
 /* ===== RESET & BASE ===== */
 * {
     margin: 0;
@@ -93,6 +98,49 @@ header .container {
 .nav-links a.active {
     border-bottom-color: #0077b6;
     color: #0077b6;
+}
+
+/* Facebook shortcut: sits beside the nav links on desktop and beside the
+   hamburger on mobile (it lives outside the collapsible menu). */
+nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+a.fb-link {
+    display: flex;
+    align-items: center;
+}
+
+.fb-link svg {
+    width: 28px;
+    height: 28px;
+    fill: #1877f2;
+    transition: transform 0.3s, fill 0.3s;
+}
+
+a.fb-link:hover svg {
+    fill: #0b5ed7;
+    transform: scale(1.1);
+}
+
+.contact-fb-icon {
+    width: 20px;
+    height: 20px;
+    fill: #1877f2;
+    vertical-align: -4px;
+}
+
+.contact-info a.contact-fb,
+.contact-info a.contact-link {
+    color: #0077b6;
+    font-weight: 600;
+}
+
+.contact-info a.contact-fb:hover,
+.contact-info a.contact-link:hover {
+    text-decoration: underline;
 }
 
 .hamburger {
@@ -405,6 +453,27 @@ header .container {
     cursor: pointer;
 }
 
+.contact-form button:disabled {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+/* Inline message shown under the Send button (replaces the old alert popup) */
+.contact-form .form-status {
+    text-align: left;
+    margin: 0;
+    min-height: 1.6em;
+    font-weight: 600;
+}
+
+.contact-form .form-status.success {
+    color: #2b8a3e;
+}
+
+.contact-form .form-status.error {
+    color: #c92a2a;
+}
+
 /* ===== FOOTER ===== */
 footer {
     background: #1a1a2e;
@@ -420,6 +489,10 @@ footer {
 @media (min-width: 769px) and (max-width: 1000px) {
     .logo-img {
         height: 56px;
+    }
+
+    nav {
+        gap: 18px;
     }
 
     .nav-links {
@@ -454,6 +527,10 @@ footer {
 
     .nav-links.open {
         display: flex;
+    }
+
+    nav {
+        gap: 16px;
     }
 
     .hamburger {
