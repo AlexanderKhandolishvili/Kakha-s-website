@@ -7,6 +7,7 @@ const TRANSLATIONS = {
         "nav.about": "About",
         "nav.services": "Services",
         "nav.contact": "Contact",
+        "nav.menuLabel": "Toggle navigation menu",
 
         "logo.src": "images/logo.png",
         "logo.alt": "Human Capital Development Group",
@@ -35,21 +36,13 @@ const TRANSLATIONS = {
         "about.h1": "About Us",
         "about.p1": "The Human Capital Development Group is a group of professionals ready to offer comprehensive, multifaceted or specific services to organizations and individuals of any legal form in Georgia and abroad. All kinds of services related to the development of the most important capital - human capital.",
         "about.p2": "For us, the word “impossible” does not exist. The main thing is the customer’s desire and a team of professionals will make the impossible possible.",
-        "about.missionLabel": "Mission:",
-        "about.missionValue": "[Write a short mission statement here]",
 
         "services.h1": "Our services include (but are not limited to) the following areas:",
-        "services.s1.title": "Service 1",
         "services.s1.desc": "Support for institutional reform or changes in organizations",
-        "services.s2.title": "Service 2",
         "services.s2.desc": "Development of long-term strategies and action plans",
-        "services.s3.title": "Service 3",
         "services.s3.desc": "Promotion of international relations and cooperation",
-        "services.s4.title": "Service 4",
         "services.s4.desc": "Support for international and transnational education",
-        "services.s5.title": "Service 5",
         "services.s5.desc": "Involvement and participation in international projects",
-        "services.s6.title": "Service 6",
         "services.s6.desc": "International and local studies",
 
         "contact.h1": "Contact Us",
@@ -82,6 +75,7 @@ const TRANSLATIONS = {
         "nav.about": "ჩვენ შესახებ",
         "nav.services": "სერვისები",
         "nav.contact": "კონტაქტი",
+        "nav.menuLabel": "ნავიგაციის მენიუს გადართვა",
 
         "logo.src": "images/logo-ka.png",
         "logo.alt": "ადამიანური კაპიტალის განვითარების ჯგუფი",
@@ -110,21 +104,13 @@ const TRANSLATIONS = {
         "about.h1": "ჩვენ შესახებ",
         "about.p1": "ადამიანური კაპიტალის განვითარების ჯგუფი წარმოადგენს პროფესიონალთა ერთობას, რომელიც მზადაა ყოვლისმომცველი, მრავალმხრივი თუ კონკრეტული მომსახურება შესთავაზოს საქართველოსა და მის ფარგლებს გარეთ არსებულ ნებისმიერი სამართლებრივი ფორმის ორგანიზაციებსა და ინდივიდებს. ყველანაირი მომსახურება, რომელიც დაკავშირებულია ყველაზე მნიშვნელოვანი კაპიტალის - ადამიანური კაპიტალის განსავითარებლად.",
         "about.p2": "ჩვენთვის სიტყვა „შეუძლებელია“ არ არსებობს. მთავარია დამკვეთის სურვილი და პროფესიონალთა გუნდი შეუძლებელს შესაძლებელს გახდის.",
-        "about.missionLabel": "მისია:",
-        "about.missionValue": "[დაწერეთ მოკლე მისიის განცხადება]",
 
         "services.h1": "ჩვენი მომსახურება მოიცავს (თუმცა არ შემოიფარგლება) შემდეგ სფეროებს",
-        "services.s1.title": "სერვისი 1",
         "services.s1.desc": "ორგანიზაციების ინსტიტუციური რეფორმისა თუ ცვლილებების მხარდაჭერა",
-        "services.s2.title": "სერვისი 2",
         "services.s2.desc": "გრძელვადიანი სტრატეგიებისა და სამოქმედო გეგმების შემუშავება",
-        "services.s3.title": "სერვისი 3",
         "services.s3.desc": "საერთაშორისო კავშირებისა და თანამშრომლობის ხელშეწყობა",
-        "services.s4.title": "სერვისი 4",
         "services.s4.desc": "საერთაშორისო და ტრანსნაციონალური განათლების მხარდაჭერა",
-        "services.s5.title": "სერვისი 5",
         "services.s5.desc": "საერთაშორისო პროექტებში ჩართვა და მონაწილეობა",
-        "services.s6.title": "სერვისი 6",
         "services.s6.desc": "საერთაშორისო და ადგილობრივი კვლევები",
 
         "contact.h1": "დაგვიკავშირდით",
@@ -187,6 +173,11 @@ function applyLanguage(lang) {
     document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
         const key = el.getAttribute("data-i18n-placeholder");
         if (dict[key] !== undefined) el.setAttribute("placeholder", dict[key]);
+    });
+
+    document.querySelectorAll("[data-i18n-aria-label]").forEach(el => {
+        const key = el.getAttribute("data-i18n-aria-label");
+        if (dict[key] !== undefined) el.setAttribute("aria-label", dict[key]);
     });
 
     document.querySelectorAll("[data-i18n-content]").forEach(el => {
