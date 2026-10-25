@@ -7,6 +7,7 @@ const TRANSLATIONS = {
         "nav.about": "About",
         "nav.services": "Services",
         "nav.contact": "Contact",
+        "nav.news": "News",
         "nav.menuLabel": "Toggle navigation menu",
 
         "logo.src": "images/logo.png",
@@ -16,11 +17,13 @@ const TRANSLATIONS = {
         "title.about": "About | Human Capital Development Group",
         "title.services": "Services | Human Capital Development Group",
         "title.contact": "Contact | Human Capital Development Group",
+        "title.news": "News | Human Capital Development Group",
 
         "meta.home": "Human Capital Development Group offers comprehensive human capital development services to organizations and individuals in Georgia and abroad.",
         "meta.about": "Learn about Human Capital Development Group, a team of professionals making the impossible possible for organizations and individuals in Georgia and abroad.",
         "meta.services": "Institutional reform support, long-term strategies, international cooperation, education, projects and research. Explore our services.",
         "meta.contact": "Contact Human Capital Development Group in Tbilisi, Georgia. Call +995 599 33 44 17 or send us a message.",
+        "meta.news": "Latest news and announcements from Human Capital Development Group.",
 
         "hero.h1": "Welcome to Human Capital Development Group",
         "hero.p": "A team of dedicated professionals delivering comprehensive human capital development services to organizations and individuals across Georgia and abroad. Bring us the challenge — we'll make it possible.",
@@ -66,6 +69,18 @@ const TRANSLATIONS = {
         "contact.form.thanks": "Thank you! Your message has been sent. We'll get back to you soon.",
         "contact.form.error": "Something went wrong. Please try again or email us directly.",
 
+        "news.h1": "News",
+        "news.latest": "Latest news",
+        "news.all": "All news",
+        "news.loading": "Loading news…",
+        "news.empty": "No news yet.",
+        "news.error": "Couldn't load the news. Please try again later.",
+        "news.readMore": "Read more →",
+        "news.prev": "Previous news",
+        "news.next": "Next news",
+        "news.back": "← All news",
+        "news.notFound": "This news post wasn't found.",
+
         "footer.text": "© 2026 Human Capital Development Group. All rights reserved.",
 
         "lang.toggle": "ქართული"
@@ -75,6 +90,7 @@ const TRANSLATIONS = {
         "nav.about": "ჩვენ შესახებ",
         "nav.services": "სერვისები",
         "nav.contact": "კონტაქტი",
+        "nav.news": "სიახლეები",
         "nav.menuLabel": "ნავიგაციის მენიუს გადართვა",
 
         "logo.src": "images/logo-ka.png",
@@ -84,11 +100,13 @@ const TRANSLATIONS = {
         "title.about": "ჩვენ შესახებ | ადამიანური კაპიტალის განვითარების ჯგუფი",
         "title.services": "სერვისები | ადამიანური კაპიტალის განვითარების ჯგუფი",
         "title.contact": "კონტაქტი | ადამიანური კაპიტალის განვითარების ჯგუფი",
+        "title.news": "სიახლეები | ადამიანური კაპიტალის განვითარების ჯგუფი",
 
         "meta.home": "ადამიანური კაპიტალის განვითარების ჯგუფი სთავაზობს ორგანიზაციებსა და ფიზიკურ პირებს ყოვლისმომცველ მომსახურებას ადამიანური კაპიტალის განვითარების სფეროში საქართველოსა და მის ფარგლებს გარეთ.",
         "meta.about": "გაიგეთ მეტი ადამიანური კაპიტალის განვითარების ჯგუფის შესახებ — პროფესიონალთა გუნდი, რომელიც შეუძლებელს შესაძლებელს ხდის.",
         "meta.services": "ინსტიტუციური რეფორმის მხარდაჭერა, გრძელვადიანი სტრატეგიები, საერთაშორისო თანამშრომლობა, განათლება, პროექტები და კვლევები. გაეცანით ჩვენს სერვისებს.",
         "meta.contact": "დაგვიკავშირდით თბილისში, საქართველო. დაგვირეკეთ +995 599 33 44 17 ნომერზე ან გამოგვიგზავნეთ შეტყობინება.",
+        "meta.news": "ადამიანური კაპიტალის განვითარების ჯგუფის უახლესი სიახლეები და ანონსები.",
 
         "hero.h1": "მოგესალმებით ადამიანური კაპიტალის განვითარების ჯგუფში",
         "hero.p": "პროფესიონალთა გუნდი, რომელიც სთავაზობს ორგანიზაციებსა და ფიზიკურ პირებს ყოვლისმომცველ მომსახურებას ადამიანური კაპიტალის განვითარების სფეროში საქართველოსა და მის ფარგლებს გარეთ. დაგვანახეთ გამოწვევა და ჩვენ შევძლებთ შეუძლებლის შესაძლებლად ქცევას.",
@@ -133,6 +151,18 @@ const TRANSLATIONS = {
         "contact.form.sending": "იგზავნება...",
         "contact.form.thanks": "გმადლობთ! თქვენი შეტყობინება გაიგზავნა. მალე დაგიკავშირდებით.",
         "contact.form.error": "დაფიქსირდა შეცდომა. გთხოვთ სცადოთ ხელახლა ან მოგვწერეთ პირდაპირ ელფოსტაზე.",
+
+        "news.h1": "სიახლეები",
+        "news.latest": "უახლესი სიახლეები",
+        "news.all": "ყველა სიახლე",
+        "news.loading": "სიახლეები იტვირთება…",
+        "news.empty": "სიახლეები ჯერ არ არის.",
+        "news.error": "სიახლეების ჩატვირთვა ვერ მოხერხდა. გთხოვთ სცადოთ მოგვიანებით.",
+        "news.readMore": "სრულად წაკითხვა →",
+        "news.prev": "წინა სიახლე",
+        "news.next": "შემდეგი სიახლე",
+        "news.back": "← ყველა სიახლე",
+        "news.notFound": "სიახლე ვერ მოიძებნა.",
 
         "footer.text": "© 2026 ადამიანური კაპიტალის განვითარების ჯგუფი. ყველა უფლება დაცულია.",
 

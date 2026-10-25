@@ -58,6 +58,7 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 24px;
 }
 
 .logo-img {
@@ -70,7 +71,7 @@ header .container {
     list-style: none;
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 22px;
 }
 
 .lang-toggle {
@@ -82,6 +83,7 @@ header .container {
     padding: 6px 14px;
     border-radius: 20px;
     cursor: pointer;
+    white-space: nowrap;
     transition: 0.3s;
 }
 
@@ -93,6 +95,7 @@ header .container {
 .nav-links a {
     color: #333;
     font-weight: 600;
+    white-space: nowrap;
     padding: 5px 0;
     border-bottom: 3px solid transparent;
     transition: 0.3s;
@@ -109,7 +112,7 @@ header .container {
 nav {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
 }
 
 a.fb-link {
@@ -313,6 +316,295 @@ a.fb-link:hover svg {
     border: 0;
 }
 
+/* ===== NEWS ===== */
+.news-section {
+    padding: 60px 0;
+    background: #fff;
+}
+
+/* An element with the "hidden" attribute stays hidden even though the rule above sets padding */
+.news-section[hidden] {
+    display: none;
+}
+
+.news-section h2 {
+    font-size: 2rem;
+    color: #0077b6;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.news-section .news-grid {
+    margin-top: 0;
+}
+
+.news-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    text-align: left;
+}
+
+.news-img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.news-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 20px 24px 24px;
+}
+
+.news-img-link {
+    display: block;
+}
+
+.news-date {
+    display: block;
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-bottom: 6px;
+}
+
+.news-card h2,
+.news-card h3 {
+    font-size: 1.2rem;
+    line-height: 1.4;
+    color: #0077b6;
+    margin: 0 0 10px;
+    text-align: left;
+}
+
+.news-card h2 a,
+.news-card h3 a {
+    color: inherit;
+}
+
+.news-card h2 a:hover,
+.news-card h3 a:hover {
+    text-decoration: underline;
+}
+
+/* "Read more" sits at the bottom of every card, so cards of different heights still line up */
+.news-more {
+    margin-top: auto;
+    padding-top: 14px;
+    color: #0077b6;
+    font-weight: 600;
+}
+
+.news-more:hover {
+    text-decoration: underline;
+}
+
+/* pre-line keeps the line breaks Kakha types in a post */
+.news-text {
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+}
+
+/* ----- One post on its own page (article.html) ----- */
+.article-container {
+    max-width: 760px;
+}
+
+.article-back {
+    display: inline-block;
+    margin-bottom: 24px;
+    color: #0077b6;
+    font-weight: 600;
+}
+
+.article-back:hover {
+    text-decoration: underline;
+}
+
+/* The whole photo is shown, never cropped or stretched: a small photo stays at its own
+   size (so it stays sharp) and a big one shrinks to fit the column. */
+.article-img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 560px;
+    margin: 0 auto 20px;
+    border-radius: 10px;
+}
+
+.page-content .article-title {
+    font-size: 1.9rem;
+    line-height: 1.35;
+    text-align: left;
+    margin: 0 0 20px;
+    overflow-wrap: anywhere;
+}
+
+.article-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.news-status {
+    text-align: center;
+    color: #6c757d;
+    margin: 30px auto;
+}
+
+/* ----- Home page slider ----- */
+.news-carousel {
+    --card-w: min(420px, 78vw);
+    position: relative;
+}
+
+/* One row of cards that scrolls sideways and snaps with a card in the middle.
+   The side padding is what lets the first and last card reach the middle too. */
+.news-track {
+    position: relative;
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 20px calc(50% - var(--card-w) / 2) 28px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.news-track::-webkit-scrollbar {
+    display: none;
+}
+
+.news-track:focus-visible {
+    outline: 2px solid #0077b6;
+    outline-offset: -2px;
+}
+
+.news-track .news-card {
+    flex: 0 0 var(--card-w);
+    scroll-snap-align: center;
+    opacity: 0.5;
+    transform: scale(0.9);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.news-track .news-card.is-active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    margin-top: -33px; /* centres on the cards, ignoring the extra padding under them */
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    cursor: pointer;
+    transition: background 0.3s, opacity 0.3s, transform 0.3s;
+}
+
+.carousel-btn svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: #0077b6;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.carousel-btn:hover:not(:disabled) {
+    background: #0077b6;
+    transform: scale(1.08);
+}
+
+.carousel-btn:hover:not(:disabled) svg {
+    stroke: #fff;
+}
+
+.carousel-btn:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.carousel-btn:focus-visible {
+    outline: 2px solid #0077b6;
+    outline-offset: 2px;
+}
+
+.carousel-prev {
+    left: 4px;
+}
+
+.carousel-next {
+    right: 4px;
+}
+
+.news-carousel.is-single .carousel-btn {
+    display: none;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.carousel-dots[hidden] {
+    display: none;
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: #c5cdd5;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.carousel-dot.is-active {
+    background: #0077b6;
+    transform: scale(1.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .news-track .news-card,
+    .carousel-btn,
+    .carousel-dot {
+        transition: none;
+    }
+}
+
+.news-all {
+    text-align: center;
+    margin-top: 30px;
+}
+
 /* ===== CONTACT ===== */
 .contact-wrapper {
     display: grid;
@@ -375,38 +667,39 @@ footer {
     margin-top: 20px;
 }
 
-/* ===== RESPONSIVE (Tablet) ===== */
-/* Between phone and full desktop the logo + nav don't fit at full size,
-   so tighten them a little. Phones (768px and below) use the mobile block below. */
-@media (min-width: 769px) and (max-width: 1000px) {
+/* ===== RESPONSIVE (Small desktop) ===== */
+/* With five menu items, the full-size logo + menu only fit comfortably from
+   1101px up. Between 981px and 1100px shrink the logo and tighten the menu. */
+@media (min-width: 981px) and (max-width: 1100px) {
     .logo-img {
         height: 56px;
     }
 
     nav {
-        gap: 18px;
+        gap: 16px;
     }
 
     .nav-links {
-        gap: 18px;
+        gap: 16px;
     }
 
     .nav-links a {
         font-size: 0.9rem;
-        white-space: nowrap;
     }
 
     .lang-toggle {
-        white-space: nowrap;
         padding: 6px 12px;
     }
 }
 
-/* ===== RESPONSIVE (Mobile) ===== */
-@media (max-width: 768px) {
+/* ===== RESPONSIVE (Tablet + Mobile menu) ===== */
+/* Up to 980px the five menu items no longer fit beside the logo,
+   so the menu collapses into the hamburger. */
+@media (max-width: 980px) {
     .nav-links {
         display: none;
         flex-direction: column;
+        align-items: flex-start;
         background: #fff;
         position: absolute;
         top: 100%;
@@ -429,6 +722,13 @@ footer {
         display: flex;
     }
 
+    .logo-img {
+        height: 56px;
+    }
+}
+
+/* ===== RESPONSIVE (Mobile) ===== */
+@media (max-width: 768px) {
     .hero h1 {
         font-size: 2rem;
     }

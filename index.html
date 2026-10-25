@@ -17,7 +17,8 @@
     <meta property="og:title" content="მთავარი | ადამიანური კაპიტალის განვითარების ჯგუფი" data-i18n-content="title.home" />
     <meta property="og:description" content="ადამიანური კაპიტალის განვითარების ჯგუფი სთავაზობს ორგანიზაციებსა და ფიზიკურ პირებს ყოვლისმომცველ მომსახურებას ადამიანური კაპიტალის განვითარების სფეროში საქართველოსა და მის ფარგლებს გარეთ." data-i18n-content="meta.home" />
     <meta property="og:url" content="https://hcdgroup.ge/" />
-    <meta property="og:image" content="https://hcdgroup.ge/images/og-image.png" />
+    <meta property="og:image" content="https://hcdgroup.ge/images/og-image-v2.png" />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -47,6 +48,7 @@
                     <li><a href="./index.html" class="active" data-i18n="nav.home">მთავარი</a></li>
                     <li><a href="./about.html" data-i18n="nav.about">ჩვენ შესახებ</a></li>
                     <li><a href="./services.html" data-i18n="nav.services">სერვისები</a></li>
+                    <li><a href="./news.html" data-i18n="nav.news">სიახლეები</a></li>
                     <li><a href="./contact.html" data-i18n="nav.contact">კონტაქტი</a></li>
                     <li><button id="lang-toggle" class="lang-toggle">English</button></li>
                 </ul>
@@ -90,6 +92,26 @@
         </div>
     </section>
 
+    <!-- ===== LATEST NEWS (hidden until the first post exists; filled in by news.js) ===== -->
+    <section class="news-section" id="latestNewsSection" hidden>
+        <div class="container">
+            <h2 data-i18n="news.latest">უახლესი სიახლეები</h2>
+            <div class="news-carousel" id="newsCarousel">
+                <button type="button" class="carousel-btn carousel-prev" id="newsPrev" aria-label="წინა სიახლე" data-i18n-aria-label="news.prev">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+                </button>
+                <div class="news-track" id="latestNews" tabindex="0" role="region" aria-roledescription="carousel" aria-label="უახლესი სიახლეები" data-i18n-aria-label="news.latest"></div>
+                <button type="button" class="carousel-btn carousel-next" id="newsNext" aria-label="შემდეგი სიახლე" data-i18n-aria-label="news.next">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+                </button>
+            </div>
+            <div class="carousel-dots" id="newsDots"></div>
+            <div class="news-all">
+                <a href="news.html" class="btn" data-i18n="news.all">ყველა სიახლე</a>
+            </div>
+        </div>
+    </section>
+
     <!-- ===== FOOTER ===== -->
     <footer>
         <div class="container">
@@ -98,6 +120,8 @@
     </footer>
 
     <script src="i18n.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="news.js"></script>
     <script src="script.js"></script>
 </body>
 

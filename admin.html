@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ka">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ადმინისტრატორი | ადამიანური კაპიტალის განვითარების ჯგუფი</title>
+    <!-- Private page: keep it out of Google and don't link to it from the site -->
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href="images/favicon.png?v=3" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="admin.css" />
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo-ka.png" alt="ადამიანური კაპიტალის განვითარების ჯგუფი" class="logo-img" />
+            </div>
+            <a href="index.html" class="admin-back">← საიტზე დაბრუნება</a>
+        </div>
+    </header>
+
+    <main class="admin-page">
+        <div class="container admin-container">
+
+            <!-- ===== LOGIN ===== -->
+            <section id="loginBox" hidden>
+                <h1>ადმინისტრატორის შესვლა</h1>
+                <form id="loginForm" class="admin-form">
+                    <label for="loginEmail">ელფოსტა</label>
+                    <input type="email" id="loginEmail" autocomplete="username" required />
+
+                    <label for="loginPassword">პაროლი</label>
+                    <input type="password" id="loginPassword" autocomplete="current-password" required />
+
+                    <button type="submit" class="btn" id="loginBtn">შესვლა</button>
+                    <button type="button" class="link-btn" id="resetBtn">პაროლის აღდგენა</button>
+                    <p class="admin-status" id="loginStatus" role="status" aria-live="polite"></p>
+                </form>
+            </section>
+
+            <!-- ===== PANEL (visible only when logged in) ===== -->
+            <section id="panel" hidden>
+                <div class="admin-bar">
+                    <span>შესული ხართ: <strong id="userEmail"></strong></span>
+                    <button type="button" class="link-btn" id="logoutBtn">გასვლა</button>
+                </div>
+
+                <h1 id="formTitle">ახალი სიახლე</h1>
+                <form id="postForm" class="admin-form">
+                    <label for="postTitle">სათაური</label>
+                    <input type="text" id="postTitle" maxlength="200" required />
+
+                    <label for="postText">ტექსტი</label>
+                    <textarea id="postText" rows="8" maxlength="10000" required></textarea>
+
+                    <label for="postPhoto">ფოტო (არასავალდებულო)</label>
+                    <input type="file" id="postPhoto" accept="image/*" />
+                    <div class="photo-preview" id="photoPreview" hidden>
+                        <img id="photoImg" alt="" />
+                        <button type="button" class="link-btn" id="photoRemove">ფოტოს წაშლა</button>
+                    </div>
+
+                    <div class="admin-actions">
+                        <button type="submit" class="btn" id="saveBtn">გამოქვეყნება</button>
+                        <button type="button" class="btn btn-secondary" id="cancelBtn" hidden>გაუქმება</button>
+                    </div>
+                    <p class="admin-status" id="postStatus" role="status" aria-live="polite"></p>
+                </form>
+
+                <h2>გამოქვეყნებული სიახლეები</h2>
+                <div id="postList" class="admin-list"></div>
+                <p class="admin-status" id="listStatus" role="status" aria-live="polite"></p>
+                <button type="button" class="link-btn" id="exportBtn">ყველა სიახლის ასლის გადმოწერა</button>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="firebase-config.js"></script>
+    <script type="module" src="admin.js"></script>
+</body>
+
+</html>

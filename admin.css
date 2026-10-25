@@ -1,0 +1,219 @@
+/* Styles for admin.html only (the private page where Kakha manages the news) */
+
+/* The "hidden" attribute must win over any display rule below */
+.admin-page [hidden] {
+    display: none !important;
+}
+
+header .admin-back {
+    color: #0077b6;
+    font-weight: 600;
+}
+
+header .admin-back:hover {
+    text-decoration: underline;
+}
+
+.admin-page {
+    padding: 40px 0 60px;
+}
+
+.admin-container {
+    max-width: 720px;
+}
+
+.admin-page h1 {
+    font-size: 1.8rem;
+    color: #0077b6;
+    margin-bottom: 20px;
+}
+
+.admin-page h2 {
+    font-size: 1.3rem;
+    color: #0077b6;
+    margin: 40px 0 16px;
+}
+
+.admin-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    margin-bottom: 30px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    overflow-wrap: anywhere;
+}
+
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.admin-form label {
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+.admin-form input[type="text"],
+.admin-form input[type="email"],
+.admin-form input[type="password"],
+.admin-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.admin-form textarea {
+    resize: vertical;
+}
+
+.admin-form input:focus,
+.admin-form textarea:focus {
+    outline: 2px solid #0077b6;
+    outline-offset: 1px;
+}
+
+.admin-form .btn,
+.admin-actions .btn {
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: inherit;
+    margin-top: 12px;
+}
+
+.admin-form .btn:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.btn-secondary {
+    background: #6c757d;
+}
+
+.btn-secondary:hover {
+    background: #495057;
+}
+
+.admin-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.link-btn {
+    background: none;
+    border: none;
+    padding: 4px 0;
+    color: #0077b6;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.link-btn:hover {
+    color: #023e8a;
+}
+
+.link-btn.danger {
+    color: #c92a2a;
+}
+
+#loginBtn {
+    align-self: flex-start;
+}
+
+.photo-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+}
+
+.photo-preview img {
+    max-width: 100%;
+    max-height: 220px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.admin-status {
+    min-height: 1.6em;
+    font-weight: 600;
+    margin-top: 6px;
+}
+
+.admin-status.success {
+    color: #2b8a3e;
+}
+
+.admin-status.error {
+    color: #c92a2a;
+}
+
+.admin-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.admin-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 14px;
+    border: 1px solid #e3e6ea;
+    border-radius: 8px;
+}
+
+.admin-item img {
+    width: 84px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: 5px;
+    flex-shrink: 0;
+}
+
+.admin-item-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.admin-item-title {
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.admin-item-date {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+.admin-item-buttons {
+    display: flex;
+    gap: 16px;
+    margin-top: 6px;
+}
+
+#exportBtn {
+    margin-top: 20px;
+}
+
+@media (max-width: 480px) {
+    .admin-item {
+        flex-direction: column;
+    }
+
+    .admin-item img {
+        width: 100%;
+        height: 140px;
+    }
+}
