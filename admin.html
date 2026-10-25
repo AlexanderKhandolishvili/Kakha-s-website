@@ -60,6 +60,16 @@
                     <label for="postText">ტექსტი</label>
                     <textarea id="postText" rows="8" maxlength="10000" required></textarea>
 
+                    <fieldset class="english-box">
+                        <legend>ინგლისური ვერსია (არასავალდებულო)</legend>
+                        <p class="admin-hint">თუ შეავსებთ ორივე ველს, ინგლისურ ენაზე მყოფ ვიზიტორებს ეს ვერსია გამოუჩნდება. თუ ცარიელია, ან მხოლოდ ერთია შევსებული, ყველას ქართული ვერსია აჩვენებს.</p>
+                        <label for="postTitleEn">სათაური ინგლისურად</label>
+                        <input type="text" id="postTitleEn" maxlength="200" lang="en" />
+
+                        <label for="postTextEn">ტექსტი ინგლისურად</label>
+                        <textarea id="postTextEn" rows="8" maxlength="10000" lang="en"></textarea>
+                    </fieldset>
+
                     <label for="postPhoto">ფოტო (არასავალდებულო)</label>
                     <input type="file" id="postPhoto" accept="image/*" />
                     <div class="photo-preview" id="photoPreview" hidden>

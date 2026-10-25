@@ -21,6 +21,7 @@
     const statusEl = document.getElementById('newsStatus');
     const section = document.getElementById('latestNewsSection');
     const SITE_NAME = 'ადამიანური კაპიტალის განვითარების ჯგუფი';
+    const SITE_NAME_EN = 'Human Capital Development Group';
     const DB_URL = 'https://firestore.googleapis.com/v1/projects/' + cfg.projectId + '/databases/(default)/documents';
     const KEY = '?key=' + encodeURIComponent(cfg.apiKey);
 
@@ -60,6 +61,8 @@
             id: doc.name ? doc.name.split('/').pop() : '',
             title: readValue(f.title),
             text: readValue(f.text),
+            titleEn: readValue(f.titleEn),
+            textEn: readValue(f.textEn),
             image: readValue(f.image),
             thumb: readValue(f.thumb),
             date: readValue(f.date)
@@ -72,12 +75,38 @@
     const MONTHS = ['იანვარი', 'თებერვალი', 'მარტი', 'აპრილი', 'მაისი', 'ივნისი',
         'ივლისი', 'აგვისტო', 'სექტემბერი', 'ოქტომბერი', 'ნოემბერი', 'დეკემბერი'];
 
-    function formatDate(iso) {
+    const MONTHS_EN = ['January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'];
+
+    function formatDate(iso, lang) {
         const d = new Date(iso);
         if (isNaN(d)) return '';
         const tbilisi = new Date(d.getTime() + 4 * 60 * 60 * 1000);
-        return tbilisi.getUTCDate() + ' ' + MONTHS[tbilisi.getUTCMonth()] + ', ' + tbilisi.getUTCFullYear();
+        const day = tbilisi.getUTCDate();
+        const month = tbilisi.getUTCMonth();
+        const year = tbilisi.getUTCFullYear();
+        if (lang === 'en') return MONTHS_EN[month] + ' ' + day + ', ' + year;
+        return day + ' ' + MONTHS[month] + ', ' + year;
     }
+
+    // The language the page is showing right now (i18n.js keeps this on <html lang>)
+    function currentLang() {
+        return document.documentElement.lang === 'en' ? 'en' : 'ka';
+    }
+
+    // Which version of a post to show: the English one when the visitor has English
+    // selected AND the post has one; otherwise the Georgian original.
+    function view(post) {
+        if (currentLang() === 'en' && post.titleEn && post.textEn) {
+            return { title: post.titleEn, text: post.textEn, lang: 'en' };
+        }
+        return { title: post.title, text: post.text, lang: 'ka' };
+    }
+
+    // Every card / article registers a function here that re-fills its texts;
+    // the language button triggers them all (see the 'languagechange' event).
+    const refreshers = [];
+    document.addEventListener('languagechange', () => refreshers.forEach((fn) => fn()));
 
     // How many characters of a post show on a card before it is cut off with "…"
     const EXCERPT_LENGTH = 160;
@@ -104,7 +133,6 @@
     function buildCard(post) {
         const card = document.createElement('article');
         card.className = 'news-card';
-        card.lang = 'ka'; // posts are written in Georgian whatever language the site is in
 
         if (isImage(post.thumb)) {
             const imgLink = document.createElement('a');
@@ -124,25 +152,22 @@
         const body = document.createElement('div');
         body.className = 'news-body';
 
-        const dateText = formatDate(post.date);
-        if (dateText) {
-            const time = document.createElement('time');
+        let time = null;
+        if (formatDate(post.date)) {
+            time = document.createElement('time');
             time.className = 'news-date';
             time.dateTime = post.date;
-            time.textContent = dateText;
             body.appendChild(time);
         }
 
         const title = document.createElement(listEl ? 'h2' : 'h3');
         const titleLink = document.createElement('a');
         titleLink.href = postUrl(post);
-        titleLink.textContent = post.title;
         title.appendChild(titleLink);
         body.appendChild(title);
 
         const text = document.createElement('div');
         text.className = 'news-text';
-        text.textContent = excerpt(post.text);
         body.appendChild(text);
 
         const more = document.createElement('a');
@@ -153,6 +178,16 @@
         body.appendChild(more);
 
         card.appendChild(body);
+
+        function refresh() {
+            const v = view(post);
+            card.lang = v.lang;
+            if (time) time.textContent = formatDate(post.date, currentLang());
+            titleLink.textContent = v.title;
+            text.textContent = excerpt(v.text);
+        }
+        refresh();
+        refreshers.push(refresh);
         return card;
     }
 
@@ -258,7 +293,7 @@
         const query = {
             structuredQuery: {
                 // "select" = only these fields: the full-size photo stays behind
-                select: { fields: ['title', 'text', 'thumb', 'date'].map((name) => ({ fieldPath: name })) },
+                select: { fields: ['title', 'text', 'titleEn', 'textEn', 'thumb', 'date'].map((name) => ({ fieldPath: name })) },
                 from: [{ collectionId: 'news' }],
                 orderBy: [{ field: { fieldPath: 'date' }, direction: 'DESCENDING' }],
                 limit: limit
@@ -298,7 +333,6 @@
     // ----- one post in full (article.html?id=...) -----
     function showArticle(post) {
         articleEl.textContent = '';
-        articleEl.lang = 'ka';
 
         if (isImage(post.image)) {
             const img = document.createElement('img');
@@ -308,26 +342,32 @@
             articleEl.appendChild(img);
         }
 
-        const dateText = formatDate(post.date);
-        if (dateText) {
-            const time = document.createElement('time');
+        let time = null;
+        if (formatDate(post.date)) {
+            time = document.createElement('time');
             time.className = 'news-date';
             time.dateTime = post.date;
-            time.textContent = dateText;
             articleEl.appendChild(time);
         }
 
         const title = document.createElement('h1');
         title.className = 'article-title';
-        title.textContent = post.title;
         articleEl.appendChild(title);
 
         const text = document.createElement('div');
         text.className = 'news-text article-text';
-        text.textContent = post.text;
         articleEl.appendChild(text);
 
-        document.title = post.title + ' | ' + SITE_NAME;
+        function refresh() {
+            const v = view(post);
+            articleEl.lang = v.lang;
+            if (time) time.textContent = formatDate(post.date, currentLang());
+            title.textContent = v.title;
+            text.textContent = v.text;
+            document.title = v.title + ' | ' + (currentLang() === 'en' ? SITE_NAME_EN : SITE_NAME);
+        }
+        refresh();
+        refreshers.push(refresh);
         articleEl.hidden = false;
     }
 

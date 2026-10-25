@@ -217,3 +217,24 @@ header .admin-back:hover {
         height: 140px;
     }
 }
+
+.english-box {
+    margin-top: 16px;
+    padding: 4px 16px 16px;
+    border: 1px solid #cfe3f1;
+    border-radius: 8px;
+    background: #f5fafd;
+    min-width: 0;
+}
+
+.english-box legend {
+    padding: 0 8px;
+    font-weight: 700;
+    color: #0077b6;
+}
+
+.admin-hint {
+    font-size: 0.9rem;
+    color: #495057;
+    margin: 6px 0 0;
+}

@@ -37,6 +37,8 @@ function parseDoc(d) {
         id: d.name.split("/").pop(),
         title: fieldValue(f.title),
         text: fieldValue(f.text),
+        titleEn: fieldValue(f.titleEn),
+        textEn: fieldValue(f.textEn),
         image: fieldValue(f.image),
         thumb: fieldValue(f.thumb),
         date: fieldValue(f.date)
@@ -237,8 +239,14 @@ $("postForm").addEventListener("submit", async (e) => {
     e.preventDefault();
     const title = $("postTitle").value.trim();
     const text = $("postText").value.trim();
+    const titleEn = $("postTitleEn").value.trim();
+    const textEn = $("postTextEn").value.trim();
     if (!title || !text) {
         setStatus($("postStatus"), "error", "შეავსეთ სათაური და ტექსტი.");
+        return;
+    }
+    if (Boolean(titleEn) !== Boolean(textEn)) {
+        setStatus($("postStatus"), "error", "ინგლისური ვერსიისთვის შეავსეთ ორივე: სათაური და ტექსტი (ან დატოვეთ ორივე ცარიელი).");
         return;
     }
 
@@ -252,9 +260,9 @@ $("postForm").addEventListener("submit", async (e) => {
         }
         const photos = { image: currentImage, thumb: currentThumb };
         if (editingId) {
-            await updateDoc(doc(db, "news", editingId), { title, text, ...photos });
+            await updateDoc(doc(db, "news", editingId), { title, text, titleEn, textEn, ...photos });
         } else {
-            await addDoc(newsRef, { title, text, ...photos, date: Timestamp.now() });
+            await addDoc(newsRef, { title, text, titleEn, textEn, ...photos, date: Timestamp.now() });
         }
         const wasEditing = Boolean(editingId);
         resetForm();
@@ -361,6 +369,8 @@ async function startEdit(listed) {
     editingId = post.id;
     $("postTitle").value = post.title;
     $("postText").value = post.text;
+    $("postTitleEn").value = post.titleEn;
+    $("postTextEn").value = post.textEn;
     currentImage = post.image;
     currentThumb = post.thumb;
     showPhoto();
@@ -393,6 +403,8 @@ $("exportBtn").addEventListener("click", async () => {
             return {
                 title: p.title,
                 text: p.text,
+                titleEn: p.titleEn || "",
+                textEn: p.textEn || "",
                 date: p.date && p.date.toDate ? p.date.toDate().toISOString() : null,
                 image: p.image || ""
             };

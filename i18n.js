@@ -229,6 +229,9 @@ function applyLanguage(lang) {
 
     saveLang(lang);
     document.documentElement.classList.remove("i18n-pending");
+
+    // Lets scripts that build content themselves (the news) re-fill it in the new language
+    document.dispatchEvent(new CustomEvent("languagechange", { detail: lang }));
 }
 
 function initLanguage() {
